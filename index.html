@@ -3,226 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dick Derksen - Derksound | Medische Echografie & Lifestyle Coaching</title>
+    <title>Derksound | Dick Derksen - Echografie & Vitaliteit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variabelen voor snelle kleuraanpassingen */
         :root {
-            --primary-color: #004a8f;      /* Medisch en zakelijk blauw */
-            --secondary-color: #e6f0fa;    /* Zeer lichtblauw voor subtiele achtergronden */
-            --text-color: #333333;         /* Donkergrijs voor betere leesbaarheid dan puur zwart */
-            --bg-color: #ffffff;           /* Witte kaarten/secties */
-            --accent-color: #007bb5;       /* Lichter blauw voor hover-effecten (komt overeen met LinkedIn blauw) */
+            --primary: #004a8f;
+            --accent: #00d2ff;
+            --text: #1a2a3a;
+            --light-bg: #f0f4f8;
+            --white: #ffffff;
         }
 
-        /* Basis opmaak */
+        * { box-sizing: border-box; }
+
         body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            font-family: 'Inter', sans-serif; 
             line-height: 1.6; 
-            color: var(--text-color); 
-            background-color: #f4f7f6; /* Rustige, lichtgrijze achtergrond */
+            color: var(--text); 
+            background: linear-gradient(135deg, #f0f4f8 0%, #d7e3ed 100%);
+            background-attachment: fixed;
             margin: 0; 
-            padding: 0; 
+            padding: 20px; 
         }
 
-        /* Container voor de website content */
         .container { 
-            max-width: 800px; 
-            margin: 40px auto; 
-            background: var(--bg-color); 
-            padding: 40px; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            max-width: 900px; 
+            margin: 0 auto; 
         }
 
-        /* Header en Logo */
+        /* Hero Section */
         header { 
             text-align: center; 
-            border-bottom: 2px solid var(--secondary-color); 
-            padding-bottom: 30px; 
-            margin-bottom: 30px; 
+            padding: 60px 20px;
         }
         
-        .logo-placeholder { 
-            width: 180px; 
-            height: 90px; 
-            background: #f9f9f9; 
-            border: 2px dashed #ccc; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            margin: 0 auto 20px auto; 
-            color: #888; 
-            font-size: 14px; 
-            border-radius: 4px;
+        .logo-img { 
+            max-width: 220px; 
+            height: auto; 
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
-        h1 { color: var(--primary-color); margin: 0 0 5px 0; font-size: 2.2rem; }
-        h2 { color: var(--primary-color); font-size: 1.5rem; margin-top: 40px; border-bottom: 1px solid var(--secondary-color); padding-bottom: 10px;}
-        .subtitle { font-size: 1.2rem; color: #555; font-weight: 500; }
+        h1 { font-weight: 700; font-size: 2.8rem; margin: 0; color: var(--primary); letter-spacing: -1px; }
+        .tagline { font-size: 1.3rem; color: #5a7184; font-weight: 300; }
 
-        /* Uitklapbare blokken (Details/Summary) */
-        details { 
-            background: #fafafa; 
-            border: 1px solid #eaeaea; 
-            border-radius: 5px; 
-            margin-bottom: 15px; 
-            padding: 15px; 
-            transition: all 0.3s ease;
-        }
-        details:hover { border-color: #ccc; }
-        
-        summary { 
-            font-weight: 600; 
-            font-size: 1.1rem;
-            cursor: pointer; 
-            color: var(--primary-color); 
-            outline: none; 
-            list-style-type: none; /* Verbergt standaard pijltje in sommige browsers */
-            position: relative; 
-            padding-left: 25px; 
-        }
-        
-        summary::-webkit-details-marker { display: none; } /* Safari / Chrome fix */
-        
-        summary::before { 
-            content: '▶'; 
-            position: absolute; 
-            left: 0; 
-            font-size: 0.8em; 
-            top: 4px; 
-            transition: transform 0.2s; 
-            color: var(--accent-color);
-        }
-        
-        details[open] summary::before { transform: rotate(90deg); }
-        
-        details > div { 
-            margin-top: 15px; 
-            padding-left: 10px; 
+        /* Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        ul { margin: 0; padding-left: 20px; }
-        li { margin-bottom: 8px; }
+        /* Over Mij - Krachtig */
+        .intro-text { font-size: 1.15rem; border-left: 4px solid var(--accent); padding-left: 20px; }
 
-        /* Contact Sectie */
-        .contact-section { 
-            margin-top: 50px; 
-            text-align: center; 
-            background: var(--secondary-color); 
-            padding: 30px; 
-            border-radius: 8px; 
-        }
-        
-        .contact-section h2 { border-bottom: none; margin-top: 0; padding-bottom: 0; }
-        
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
+        /* Diensten Sectie */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
             margin-top: 20px;
-            flex-wrap: wrap;
         }
 
-        .btn { 
-            display: inline-block; 
-            color: var(--bg-color); 
-            background: var(--primary-color); 
-            padding: 12px 24px; 
-            text-decoration: none; 
-            border-radius: 5px; 
-            font-weight: bold; 
-            transition: background 0.3s, transform 0.1s; 
+        .service-box {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            border-top: 5px solid var(--primary);
+            transition: transform 0.3s ease;
         }
+        .service-box:hover { transform: translateY(-5px); }
+        .service-box h3 { margin-top: 0; color: var(--primary); }
+
+        /* Ervaring - Minder CV, meer 'Track Record' */
+        .experience-list { list-style: none; padding: 0; }
+        .experience-item { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 12px 0; 
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .experience-item span { color: #778ca3; font-size: 0.9rem; }
+
+        /* Details/Summary styling */
+        details { cursor: pointer; margin-bottom: 10px; }
+        summary { font-weight: 600; color: var(--primary); padding: 10px 0; outline: none; }
         
-        .btn:hover { background: var(--accent-color); transform: translateY(-2px); }
-
-        /* Footer */
-        footer { 
-            text-align: center; 
-            margin-top: 30px; 
-            font-size: 0.9em; 
-            color: #888; 
-            border-top: 1px solid #eaeaea;
-            padding-top: 20px;
+        /* Contact */
+        .cta-block {
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
         }
+        .cta-block h2 { color: white; margin-top: 0; }
+        .btn-group { display: flex; justify-content: center; gap: 15px; margin-top: 25px; }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-white { background: white; color: var(--primary); }
+        .btn-outline { border: 2px solid white; color: white; }
+        .btn:hover { opacity: 0.9; transform: scale(1.05); }
 
-        /* Responsiviteit voor mobiele telefoons */
-        @media (max-width: 600px) {
-            .container { margin: 15px; padding: 20px; }
-            h1 { font-size: 1.8rem; }
-            .contact-buttons { flex-direction: column; }
+        footer { text-align: center; padding: 40px; font-size: 0.85rem; color: #778ca3; }
+
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+            .glass-card { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <!-- HEADER -->
-        <header>
-            <!-- Vervang de div hieronder door een <img> tag zodra je het logo hebt -->
-            <div class="logo-placeholder">
-              <img src="logo.png" alt="Logo Derksound" style="max-width: 200px; height: auto; margin: 0 auto 20px auto; display: block;">            
+<div class="container">
+
+    <header>
+        <img src="logo.png" alt="Derksound Logo" class="logo-img">
+        <h1>Derksound</h1>
+        <p class="tagline">Medische precisie ontmoet fysieke vitaliteit</p>
+    </header>
+
+    <main>
+        <section class="glass-card">
+            <div class="intro-text">
+                <p><strong>Dick Derksen</strong> slaat de brug tussen diagnostiek en beweging. Met ruim 30 jaar ervaring in de medische beeldvorming (Rijnstate, Medinova) en een rol als docent Echografie bij Fontys, combineert hij een scherp klinisch oog met een passie voor coaching. Of het nu gaat om een heldere echo of het herwinnen van fysieke kracht: Dick brengt u in beweging.</p>
             </div>
-            
-            <h1>Dick Derksen</h1>
-            <div class="subtitle">Echografie, Lifestyle Coaching & Sport</div>
-        </header>
+        </section>
 
-        <!-- MAIN CONTENT -->
-        <main>
-            
-            <!-- OVER MIJ SECTIE -->
-            <section>
-                <h2>Over Mij</h2>
-                <p>Welkom. Ik ben Dick Derksen, de drijvende kracht achter <strong>Derksound</strong>. Met meer dan dertig jaar klinische werkervaring in de medische beeldvorming, onder andere als röntgen- en echolaborant bij Rijnstate Arnhem en Medinova, heb ik een uiterst solide medische basis opgebouwd. Mijn toewijding aan gezondheid en het optimaal functioneren van het menselijk lichaam heeft ertoe geleid dat ik mijn horizon continu ben blijven verbreden.</p>
-                <p>Sinds 2013 zet ik mijn kennis in als docent Musculoskeletal Echografie aan de Fontys Hogescholen. Naast de pure medische diagnostiek richt ik mij nadrukkelijk op de algehele vitaliteit van de mens. Als post-HBO gediplomeerd Lifestyle Coach en gedreven sportinstructeur (waaronder Parkinson Boksen en kickboksen) combineer ik medische precisie met preventieve en herstellende coaching. Zo bied ik een complete aanpak: van betrouwbare medische diagnostiek tot gerichte fysieke begeleiding.</p>
-            </section>
+        <div class="services-grid">
+            <div class="service-box">
+                <h3>Lifestyle Coaching</h3>
+                <p>Als post-HBO Lifestyle Coach helpt Dick professionals en particulieren naar een duurzame balans. Geen tijdelijke diëten, maar een wetenschappelijk onderbouwde aanpak van slaap, stress, voeding en beweging. Herpak de regie over uw vitaliteit.</p>
+            </div>
+            <div class="service-box">
+                <h3>Parkinson Boksen</h3>
+                <p>Specialistische sportbegeleiding waarbij boksen wordt ingezet als medicijn. Door te focussen op coördinatie, balans en reactiesnelheid, helpt Dick mensen met Parkinson hun fysieke zelfvertrouwen te vergroten in een energieke en veilige omgeving.</p>
+            </div>
+        </div>
 
-            <!-- ERVARING & DIENSTEN (UITKLAPBAAR) -->
-            <section>
-                <h2>Expertise & Ervaring</h2>
-                
-                <details>
-                    <summary>Derksound: Coaching & Sportinstructie</summary>
-                    <div>
-                        <ul>
-                            <li><strong>Lifestyle Coach</strong> – Post-HBO, Fontys Hogescholen <em>(2021 - heden)</em></li>
-                            <li><strong>Sportinstructeur</strong> – O.a. Parkinson Boksen en Kickboksen <em>(2017 - heden)</em></li>
-                        </ul>
+        <section class="glass-card" style="margin-top: 30px;">
+            <details>
+                <summary>Bekijk het trackrecord in Echografie & Onderwijs</summary>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <strong>Docent Musculoskeletal Echografie</strong>
+                        <span>Fontys Hogescholen | 2013 - Heden</span>
                     </div>
-                </details>
-
-                <details>
-                    <summary>Werkervaring: Radiologie & Echografie</summary>
-                    <div>
-                        <ul>
-                            <li><strong>Docent Echografie (Musculoskeletal)</strong> – Fontys Hogescholen <em>(2013 - heden)</em></li>
-                            <li><strong>Röntgen/Echolaborant</strong> – Rijnstate Arnhem <em>(1992 - heden)</em></li>
-                            <li><strong>Röntgen/Echolaborant</strong> – Medinova <em>(2003 - 2021)</em></li>
-                        </ul>
+                    <div class="experience-item">
+                        <strong>Röntgen- & Echolaborant</strong>
+                        <span>Rijnstate Arnhem | 1992 - Heden</span>
                     </div>
-                </details>
-            </section>
-
-            <!-- CONTACT -->
-            <section class="contact-section">
-                <h2>Neem Contact Op</h2>
-                <p>Wilt u meer weten over de mogelijkheden vanuit Derksound of een kennismaking inplannen?</p>
-                <div class="contact-buttons">
-                    <a href="mailto:info@derksound.nl" class="btn">✉ info@derksound.nl</a>
-                    <a href="https://www.linkedin.com/in/dick-derksen-19b59875/" target="_blank" rel="noopener noreferrer" class="btn">in LinkedIn Profiel</a>
+                    <div class="experience-item">
+                        <strong>Echolaborant (Specialist)</strong>
+                        <span>Medinova | 2003 - 2021</span>
+                    </div>
                 </div>
-            </section>
+            </details>
+        </section>
 
-        </main>
+        <section class="cta-block">
+            <h2>Klaar voor de volgende stap?</h2>
+            <p>Neem direct contact op voor een consult of training.</p>
+            <div class="btn-group">
+                <a href="mailto:info@derksound.nl" class="btn btn-white">Stuur een mail</a>
+                <a href="https://www.linkedin.com/in/dick-derksen-19b59875/" target="_blank" class="btn btn-outline">LinkedIn</a>
+            </div>
+        </section>
+    </main>
 
-        <!-- FOOTER -->
-        <footer>
-            <p>&copy; 2026 Dick Derksen | Derksound. <br>KvK-nummer: 62210912</p>
-        </footer>
+    <footer>
+        <p>&copy; 2026 Derksound | Dick Derksen<br>
+        KvK: 62210912 | Geregistreerd Lifestyle Coach</p>
+    </footer>
 
-    </div>
+</div>
 
 </body>
 </html>
