@@ -45,15 +45,16 @@
             border-bottom: 1px solid #e2e8f0;
         }
 
-        /* Aangepast logo: Rond en beter geïntegreerd */
+        /* Aangepast logo: Kleuren kloppen met de site en witte achtergrond wordt transparant */
         .logo-img {
             max-width: 180px;
             height: auto;
             margin-bottom: 25px;
-            border-radius: 50%; /* Maakt het logo rond */
-            border: 4px solid var(--card-bg); /* Subtiel randje */
-            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); /* Zachtere schaduw */
+            border-radius: 50%; 
+            border: 4px solid var(--teal); /* Randje in de nieuwe zeegroene huiskleur */
+            box-shadow: 0 8px 20px rgba(13, 148, 136, 0.2); /* Subtiele schaduw in de teal kleur */
             animation: float 6s ease-in-out infinite;
+            mix-blend-mode: multiply; /* DE TRUC: Maakt een witte achtergrond direct transparant! */
         }
 
         /* Gradient tekst voor de titel */
