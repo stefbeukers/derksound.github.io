@@ -9,9 +9,9 @@
     <style>
         :root {
             /* Modern, energiek kleurenpalet */
-            --dark-slate: #0f172a;       /* Diep, autoritair donkerblauw/grijs */
-            --teal: #0d9488;             /* Gezond, fris zeegroen */
-            --orange: #f97316;           /* Energieke oranje accentkleur */
+            --dark-slate: #0f172a;       
+            --teal: #0d9488;             
+            --orange: #f97316;           
             --text-color: #334155;
             --bg-color: #f8fafc;
             --card-bg: #ffffff;
@@ -45,11 +45,14 @@
             border-bottom: 1px solid #e2e8f0;
         }
 
+        /* Aangepast logo: Rond en beter geïntegreerd */
         .logo-img {
             max-width: 180px;
             height: auto;
             margin-bottom: 25px;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+            border-radius: 50%; /* Maakt het logo rond */
+            border: 4px solid var(--card-bg); /* Subtiel randje */
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); /* Zachtere schaduw */
             animation: float 6s ease-in-out infinite;
         }
 
@@ -74,7 +77,6 @@
             display: inline-block;
         }
         
-        /* Subtiele lijn onder de tagline */
         .tagline::after {
             content: '';
             position: absolute;
@@ -112,6 +114,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-top: 30px;
+            margin-bottom: 50px;
         }
 
         .service-box {
@@ -126,37 +129,47 @@
         .service-box:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
         .service-box h3 { font-size: 1.5rem; margin-top: 0; color: var(--dark-slate); font-weight: 600; }
 
-        /* Details (Ervaring) */
-        details { 
-            background: var(--bg-color);
-            border-radius: 12px;
-            padding: 5px;
+        /* --- SUBTIELE ERVARING (Minder aanwezig) --- */
+        .experience-section {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        details.minimal-details { 
+            background: transparent;
+            border-bottom: 1px solid #cbd5e1;
+            padding: 10px 0;
             transition: all 0.3s ease;
         }
         
-        summary { 
+        details.minimal-details summary { 
             font-weight: 600; 
-            color: var(--dark-slate); 
-            padding: 15px; 
+            color: #64748b; /* Lichter van kleur zodat het minder de aandacht trekt */
+            padding: 10px 0; 
             cursor: pointer;
             list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 1rem;
         }
         
-        summary::-webkit-details-marker { display: none; }
-        summary::after { content: '+'; font-size: 1.5rem; color: var(--teal); transition: transform 0.3s; }
-        details[open] summary::after { transform: rotate(45deg); color: var(--orange); }
+        details.minimal-details summary:hover { color: var(--teal); }
+        details.minimal-details summary::-webkit-details-marker { display: none; }
+        details.minimal-details summary::after { content: '+'; font-size: 1.2rem; color: #94a3b8; transition: transform 0.3s; }
+        details.minimal-details[open] summary::after { transform: rotate(45deg); color: var(--orange); }
+
+        .experience-content {
+            padding: 15px 0 25px 0;
+        }
 
         .experience-item { 
             display: flex; 
             justify-content: space-between; 
-            padding: 15px; 
-            border-top: 1px solid #e2e8f0;
+            padding: 10px 0; 
         }
-        .experience-item strong { color: var(--dark-slate); }
-        .experience-item span { color: #64748b; font-size: 0.95rem; }
+        .experience-item strong { color: var(--dark-slate); font-weight: 600;}
+        .experience-item span { color: #64748b; font-size: 0.9rem; }
 
         /* --- CONTACT CTA --- */
         .cta-block {
@@ -209,7 +222,7 @@
             h1 { font-size: 2.5rem; }
             .tagline { font-size: 1.1rem; }
             .services-grid { grid-template-columns: 1fr; }
-            .experience-item { flex-direction: column; gap: 5px; }
+            .experience-item { flex-direction: column; gap: 2px; }
             .btn-group { flex-direction: column; }
             .btn { width: 100%; text-align: center; }
         }
@@ -219,7 +232,6 @@
 
     <!-- HERO HEADER -->
     <header class="hero">
-        <!-- Logo animatie zit in de CSS klasse 'logo-img' -->
         <img src="logo.png" alt="Derksound Logo" class="logo-img">
         <h1>Derksound</h1>
         <p class="tagline">Medische precisie ontmoet fysieke vitaliteit</p>
@@ -246,11 +258,11 @@
                 </div>
             </div>
 
-            <!-- ERVARING (MODERNE UITKLAPPER) -->
-            <section class="card" style="margin-top: 40px; padding: 25px;">
-                <details>
-                    <summary>Bekijk het trackrecord in Echografie & Onderwijs</summary>
-                    <div>
+            <!-- ERVARING (SUBTIEL EN MINIMALISTISCH) -->
+            <section class="experience-section">
+                <details class="minimal-details">
+                    <summary>Achtergrond & Trackrecord Echografie</summary>
+                    <div class="experience-content">
                         <div class="experience-item">
                             <strong>Docent Musculoskeletal Echografie</strong>
                             <span>Fontys Hogescholen | 2013 - Heden</span>
@@ -268,7 +280,7 @@
             </section>
 
             <!-- CONTACT CTA -->
-            <section class="cta-block" style="margin-top: 40px;">
+            <section class="cta-block">
                 <h2>Klaar voor de volgende stap?</h2>
                 <p style="font-size: 1.1rem; color: #cbd5e1; margin-bottom: 0;">Neem direct contact op voor een consult of training.</p>
                 <div class="btn-group">
