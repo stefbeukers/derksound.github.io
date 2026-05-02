@@ -45,16 +45,16 @@
             border-bottom: 1px solid #e2e8f0;
         }
 
-        /* Aangepast logo: Kleuren kloppen met de site en witte achtergrond wordt transparant */
+        /* Aangepast logo: Rond, betere kleuren en transparantie-truc */
         .logo-img {
             max-width: 180px;
             height: auto;
             margin-bottom: 25px;
             border-radius: 50%; 
-            border: 4px solid var(--teal); /* Randje in de nieuwe zeegroene huiskleur */
-            box-shadow: 0 8px 20px rgba(13, 148, 136, 0.2); /* Subtiele schaduw in de teal kleur */
+            border: 4px solid var(--teal);
+            box-shadow: 0 8px 20px rgba(13, 148, 136, 0.2);
             animation: float 6s ease-in-out infinite;
-            mix-blend-mode: multiply; /* DE TRUC: Maakt een witte achtergrond direct transparant! */
+            mix-blend-mode: multiply; /* Zorgt dat een eventuele witte achtergrond wegvalt */
         }
 
         /* Gradient tekst voor de titel */
@@ -109,7 +109,7 @@
         }
         .intro-text strong { color: var(--teal); }
 
-        /* Diensten Grid */
+        /* --- DIENSTEN GRID --- */
         .services-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -126,51 +126,28 @@
             transition: all 0.3s ease;
         }
         
-        .service-box:nth-child(2) { border-left-color: var(--orange); }
+        .service-box.orange-border { border-left-color: var(--orange); }
+        .service-box.slate-border { border-left-color: var(--dark-slate); }
+        
         .service-box:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
         .service-box h3 { font-size: 1.5rem; margin-top: 0; color: var(--dark-slate); font-weight: 600; }
 
-        /* --- SUBTIELE ERVARING (Minder aanwezig) --- */
-        .experience-section {
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-        }
+        /* Zorgt dat het Echografie blok twee kolommen inneemt */
+        .full-width { grid-column: 1 / -1; }
 
-        details.minimal-details { 
-            background: transparent;
-            border-bottom: 1px solid #cbd5e1;
-            padding: 10px 0;
-            transition: all 0.3s ease;
+        /* Styling voor de werkervaringen binnen het Echografie blok */
+        .experience-list {
+            margin-top: 25px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
         }
-        
-        details.minimal-details summary { 
-            font-weight: 600; 
-            color: #64748b; /* Lichter van kleur zodat het minder de aandacht trekt */
-            padding: 10px 0; 
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1rem;
-        }
-        
-        details.minimal-details summary:hover { color: var(--teal); }
-        details.minimal-details summary::-webkit-details-marker { display: none; }
-        details.minimal-details summary::after { content: '+'; font-size: 1.2rem; color: #94a3b8; transition: transform 0.3s; }
-        details.minimal-details[open] summary::after { transform: rotate(45deg); color: var(--orange); }
-
-        .experience-content {
-            padding: 15px 0 25px 0;
-        }
-
         .experience-item { 
             display: flex; 
             justify-content: space-between; 
-            padding: 10px 0; 
+            padding: 8px 0; 
         }
         .experience-item strong { color: var(--dark-slate); font-weight: 600;}
-        .experience-item span { color: #64748b; font-size: 0.9rem; }
+        .experience-item span { color: #64748b; font-size: 0.95rem; }
 
         /* --- CONTACT CTA --- */
         .cta-block {
@@ -223,6 +200,7 @@
             h1 { font-size: 2.5rem; }
             .tagline { font-size: 1.1rem; }
             .services-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; } /* Reset volle breedte op mobiel */
             .experience-item { flex-direction: column; gap: 2px; }
             .btn-group { flex-direction: column; }
             .btn { width: 100%; text-align: center; }
@@ -247,23 +225,25 @@
                 </div>
             </section>
 
-            <!-- DIENSTEN GRID -->
+            <!-- DIENSTEN GRID (Inclusief Echografie) -->
             <div class="services-grid">
+                
                 <div class="service-box">
                     <h3>Lifestyle Coaching</h3>
                     <p>Als post-HBO Lifestyle Coach helpt Dick professionals en particulieren naar een duurzame balans. Geen tijdelijke diëten, maar een wetenschappelijk onderbouwde aanpak van slaap, stress, voeding en beweging. Herpak de regie over uw vitaliteit.</p>
                 </div>
-                <div class="service-box">
+                
+                <div class="service-box orange-border">
                     <h3>Parkinson Boksen</h3>
                     <p>Specialistische sportbegeleiding waarbij boksen wordt ingezet als medicijn. Door te focussen op coördinatie, balans en reactiesnelheid, helpt Dick mensen met Parkinson hun fysieke zelfvertrouwen te vergroten in een energieke en veilige omgeving.</p>
                 </div>
-            </div>
 
-            <!-- ERVARING (SUBTIEL EN MINIMALISTISCH) -->
-            <section class="experience-section">
-                <details class="minimal-details">
-                    <summary>Achtergrond & Trackrecord Echografie</summary>
-                    <div class="experience-content">
+                <!-- ECHOGRAFIE (Volle breedte) -->
+                <div class="service-box slate-border full-width">
+                    <h3>Echografie</h3>
+                    <p>Naast coaching is Dick een autoriteit op het gebied van medische beeldvorming. Met een scherp klinisch oog en decennia aan ervaring in ziekenhuizen en gespecialiseerde klinieken, staat hij garant voor hoogwaardige echografische diagnostiek en het opleiden van de nieuwe generatie professionals.</p>
+                    
+                    <div class="experience-list">
                         <div class="experience-item">
                             <strong>Docent Musculoskeletal Echografie</strong>
                             <span>Fontys Hogescholen | 2013 - Heden</span>
@@ -277,8 +257,9 @@
                             <span>Medinova | 2003 - 2021</span>
                         </div>
                     </div>
-                </details>
-            </section>
+                </div>
+
+            </div>
 
             <!-- CONTACT CTA -->
             <section class="cta-block">
