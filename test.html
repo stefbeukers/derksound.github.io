@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DerkSound | Echografie, Lifestyle & Sport</title>
+    <style>
+        :root {
+            --dark-blue: #1a1a1a;
+            --teal: #4db6ac;
+            --white: #f5f5f5;
+            --accent: #263238;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--dark-blue);
+            background-color: var(--white);
+        }
+
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-placeholder {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-blue);
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('jouw-foto-achtergrond.jpg'); /* Vervang door je eigen foto */
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .btn {
+            background-color: var(--teal);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: var(--teal);
+            border-bottom: 2px solid var(--teal);
+            padding-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        footer {
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo-placeholder">DERKSOUND</div>
+        <div class="nav-links">
+            <a href="#echo">Echografie</a>
+            <a href="#sport">Sport & Lifestyle</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+</header>
+
+<div class="hero">
+    <h1>Medische Precisie & Fysieke Kracht</h1>
+    <p>DerkSound | MSK Echografie, Educatie & Specialistische Coaching</p>
+    <a href="contact.html" class="btn">Neem Direct Contact Op</a>
+</div>
+
+<section id="echo">
+    <h2>Echografie & Educatie</h2>
+    <p>Als zelfstandig echo-laborant en docent bij <strong>Fontys Hogeschool</strong> breng ik expertise direct naar de werkvloer.</p>
+    <div class="grid">
+        <div class="card">
+            <h3>MSK Specialist</h3>
+            <p>Gespecialiseerd in het bewegingsapparaat. Ik vertaal complexe anatomie naar heldere diagnostiek.</p>
+        </div>
+        <div class="card">
+            <h3>Incompany Training</h3>
+            <p>Internationale ervaring, waaronder maatwerktrajecten in het ziekenhuis van Curaçao.</p>
+        </div>
+    </div>
+</section>
+
+<section id="sport" style="background-color: #eee;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <h2>Sport & Lifestyle</h2>
+        <p>Beweging als medicijn. Medisch onderbouwde training en coaching.</p>
+        <div class="grid">
+            <div class="card">
+                <h3>Parkinson Boks Trainer</h3>
+                <p>Specifieke training gericht op balans, coördinatie en cognitieve uitdaging.</p>
+            </div>
+            <div class="card">
+                <h3>Kickboksen & Coaching</h3>
+                <p>HBO-gecertificeerde lifestylecoaching en actieve bokstraining voor resultaat.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 DerkSound - www.derksound.nl</p>
+</footer>
+
+</body>
+</html>
