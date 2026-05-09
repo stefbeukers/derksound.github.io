@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derksound | Dick Derksen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Derksound.Dat is een ontzettend gaaf idee. Het koppelen van de specialiteiten aan specifieke gewrichten is conceptueel heel sterk. Het straalt direct medische kennis en activiteit uit.
+
+Om direct antwoord te geven: **Ja, dit is absoluut haalbaar.** Het is echter wel een stuk complexer dan een standaard website. Waar de Stripe Press-website subtiele 3D-effecten en overgangen gebruikt op boeken, vraag jij om een interactieve, geanimeerde anatomische weergave.
+
+Omdat je al aangaf de lay-out en styling eerst op orde te willen krijgen, is het essentieel om nu te bepalen *hoe* je dit skelet wilt integreren. Dit beïnvloedt namelijk de hele structuur van je startpagina.
+
+Hieronder leg ik de technische keuzes uit, laat ik zien hoe je de lay-out moet aanpassen, en geef ik je een **werkend, vereenvoudigd voorbeeld**.
+
+---
+
+### De Technische Uitdaging: Hoe werkt dit?
+
+Om een specifiek gewricht te laten bewegen of reageren wanneer de muis eroverheen gaat (een *hover-event*), heb je drie dingen nodig:
+
+1.  **De Afbeelding (Skelet):** Een standaard foto (JPG/PNG) werkt niet, omdat je in code niet kunt aanwijzen waar "de schouder" op de foto zit. Je hebt een **SVG (Scalable Vector Graphics)** nodig. Een SVG is opgebouwd uit code. Elk botje en gewricht kan een eigen 'naam' (ID) krijgen, zoals `id="schouder_gewricht"`.
+2.  **De Styling (CSS):** Voor de look en de basis-overgangen.
+3.  **De Magie (JavaScript of CSS Animatie):** Een script dat luistert: *"Als de muis over `#schouder_gewricht` beweegt, voer dan een beweging uit."*
+
+---
+
+### Het Ontwerp: De One-Pager Lay-out Aanpassen
+
+In het vorige voorbeeld hadden we een standaardindeling: een Hero-tekst, en daaronder de blokken met 'Over Mij' en 'Diensten'.
+
+Als we het Stripe Press-idee volgen, wordt het skelet de **hoofdnavigatie** en het visuele middelpunt. De tekstblokken ('Echografie', 'Coaching') verschijnen pas zodra je op een gewricht klikt of erover hovert.
+
+#### De nieuwe structuur:
+
+1.  **Header** (Onveranderd)
+2.  **Hero/Skelet Sectie:** (Nieuw) Dit beslaat het hele scherm.
+    *   Links: De hoofdtekst ("Dick Derksen - In beweging").
+    *   Midden/Rechts: Het interactieve SVG-skelet.
+    *   *De oude 'Diensten'-kaarten verdwijnen als losse blokken.* Hun tekst komt in de interactie van het skelet.
+3.  **Over Mij** (Iets compacter)
+4.  **Contact** (Onveranderd)
+
+---
+
+### Werkend Voorbeeld: Vereenvoudigd Skelet-interactie
+
+Ik heb een voorbeeld gemaakt met een heel schematisch skelet (simpele lijnen en cirkels). Dit is puur om de **techniek en lay-out** te laten zien. Een echt, mooi getekend anatomisch skelet is een SVG-bestand dat je later moet (laten) maken of kopen.
+
+#### 1. De Bijgewerkte HTML (`index.html`)
+
+Vervang de inhoud van je `index.html` door deze code. Let op hoe de 'Diensten' nu *in* de skelet-sectie zijn verwerkt als verborgen tekstblokken.
+
+```html
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derksound | Dick Derksen - Lifestyle Coach & Bokstrainer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Derksound.</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#over">Over mij</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- NIEUWE HERO SKELET SECTIE -->
+        <section id="home" class="hero-skeleton">
+            <div class="container skeleton-wrapper">
+                
+                <!-- Links: Introductie tekst -->
+                <div class="skeleton-intro">
+                    <h1>Mentaal en fysiek in balans.</h1>
+                    <p>Hoi, ik ben Dick Derksen. Lifestyle Coach, Bokstrainer en Echolaborant. Beweeg je muis over het skelet en ontdek hoe mijn medische kennis jouw training versterkt.</p>
+                </div>
+
+                <!-- Rechts: Het Interactieve Skelet (SVG) -->
+                <div class="skeleton-container">
+                    <!-- Dit is een vereenvoudigde SVG-weergave -->
+                    <svg viewBox="0 0 200 400" class="skeleton-svg">
+                        <!-- Romp en Hoofd (Statisch) -->
+                        <circle cx="100" cy="50" r="20" class="bone-static" />
+                        <line x1="100" y1="70" x2="100" y2="170" class="bone-static" stroke-width="8" />
+                        
+                        <!-- Schouder Gewricht (INTERACTIEF -> Echografie) -->
+                        <g id="joint-echografie" class="interactive-joint">
+                            <circle cx="70" cy="90" r="12" class="joint-ball" />
+                            <line x1="70" y1="90" x2="40" y2="150" class="bone-arm" stroke-width="6" />
+                        </g>
+
+                        <!-- Heup Gewricht (INTERACTIEF -> Coaching) -->
+                        <g id="joint-coaching" class="interactive-joint">
+                            <circle cx="85" cy="170" r="12" class="joint-ball" />
+                            <line x1="85" y1="170" x2="85" y2="250" class="bone-leg" stroke-width="6" />
+                        </g>
+
+                        <!-- Knie Gewricht (INTERACTIEF -> Boksen) -->
+                        <g id="joint-boksen" class="interactive-joint">
+                            <circle cx="85" cy="250" r="12" class="joint-ball" />
+                            <line x1="85" y1="250" x2="85" y2="330" class="bone-leg" stroke-width="6" />
+                        </g>
+                    </svg>
+
+                    <!-- Tekstblokken die verschijnen bij hover (verborgen via CSS) -->
+                    <div class="service-info-overlay" id="info-echografie">
+                        <h3>Musculoskeletal Echografie</h3>
+                        <p>Diepgaande kennis van anatomie en het bewegingsapparaat. Ik zie hoe je lichaam werkt, wat overbelasting doet en hoe je veilig traint.</p>
+                    </div>
+                    <div class="service-info-overlay" id="info-coaching">
+                        <h3>Lifestyle Coaching</h3>
+                        <p>Persoonlijke begeleiding naar een gezonde balans. We kijken naar voeding, beweging en mindset, ondersteund door medisch inzicht.</p>
+                    </div>
+                    <div class="service-info-overlay" id="info-boksen">
+                        <h3>(Parkinson) Boksen</h3>
+                        <p>Krachtige trainingen voor balans, coördinatie en conditie. Veilig en effectief, of je nu fit wilt worden of leeft met Parkinson.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Over Mij Sectie -->
+        <section id="over" class="section bg-light">
+            <div class="container">
+                <h2>Over Dick Derksen</h2>
+                <div class="about-text">
+                    <p>Beweging, gezondheid en het menselijk lichaam lopen als een rode draad door mijn leven. Met <strong>Derksound</strong> focus ik mij volledig op het begeleiden van mensen naar een gezondere en sterkere leefstijl door middel van Lifestyle Coaching en (Kick)boksen.</p>
+                    <p>Wat mijn aanpak uniek maakt, is mijn uitgebreide medische achtergrond. Al sinds 1992 ben ik werkzaam als Röntgen- en Echolaborant. Deze diepgaande kennis neem ik mee in elke sessie. Ik weet precies hoe het lichaam werkt, wat overbelasting kan doen en hoe we veilig maar effectief jouw doelen kunnen bereiken.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Sectie -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Klaar voor de volgende stap?</h2>
+                <p>Neem gerust contact op voor een vrijblijvend kennismakingsgesprek.</p>
+                <div class="contact-info">
+                    <p>✉️ <a href="mailto:info@derksound.nl">info@derksound.nl</a></p>
+                    <p>📞 [Jouw Telefoonnummer]</p>
+                    <p>📍 Arnhem en omstreken</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Derksound | Dick Derksen</p>
+            <p class="kvk-text">KvK-nummer: 62210912</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT VOOR DE HOVER INTERACTIE -->
+    <script>
+        // Functie om info te tonen
+        function showInfo(jointId, infoId) {
+            const joint = document.getElementById(jointId);
+            const infoBlock = document.getElementById(infoId);
+
+            joint.addEventListener('mouseenter', () => {
+                infoBlock.classList.add('active');
+            });
+
+            joint.addEventListener('mouseleave', () => {
+                infoBlock.classList.remove('active');
+            });
+        }
+
+        // Koppel de gewrichten aan de juiste tekstblokken
+        showInfo('joint-echografie', 'info-echografie');
+        showInfo('joint-coaching', 'info-coaching');
+        showInfo('joint-boksen', 'info-info-boksen');
+    </script>
+</body>
+</html>
