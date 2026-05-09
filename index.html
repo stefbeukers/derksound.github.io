@@ -3,64 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Derksound | Dick Derksen</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <nav class="container">
-            <div class="logo">Derksound.Dat is een ontzettend gaaf idee. Het koppelen van de specialiteiten aan specifieke gewrichten is conceptueel heel sterk. Het straalt direct medische kennis en activiteit uit.
-
-Om direct antwoord te geven: **Ja, dit is absoluut haalbaar.** Het is echter wel een stuk complexer dan een standaard website. Waar de Stripe Press-website subtiele 3D-effecten en overgangen gebruikt op boeken, vraag jij om een interactieve, geanimeerde anatomische weergave.
-
-Omdat je al aangaf de lay-out en styling eerst op orde te willen krijgen, is het essentieel om nu te bepalen *hoe* je dit skelet wilt integreren. Dit beïnvloedt namelijk de hele structuur van je startpagina.
-
-Hieronder leg ik de technische keuzes uit, laat ik zien hoe je de lay-out moet aanpassen, en geef ik je een **werkend, vereenvoudigd voorbeeld**.
-
----
-
-### De Technische Uitdaging: Hoe werkt dit?
-
-Om een specifiek gewricht te laten bewegen of reageren wanneer de muis eroverheen gaat (een *hover-event*), heb je drie dingen nodig:
-
-1.  **De Afbeelding (Skelet):** Een standaard foto (JPG/PNG) werkt niet, omdat je in code niet kunt aanwijzen waar "de schouder" op de foto zit. Je hebt een **SVG (Scalable Vector Graphics)** nodig. Een SVG is opgebouwd uit code. Elk botje en gewricht kan een eigen 'naam' (ID) krijgen, zoals `id="schouder_gewricht"`.
-2.  **De Styling (CSS):** Voor de look en de basis-overgangen.
-3.  **De Magie (JavaScript of CSS Animatie):** Een script dat luistert: *"Als de muis over `#schouder_gewricht` beweegt, voer dan een beweging uit."*
-
----
-
-### Het Ontwerp: De One-Pager Lay-out Aanpassen
-
-In het vorige voorbeeld hadden we een standaardindeling: een Hero-tekst, en daaronder de blokken met 'Over Mij' en 'Diensten'.
-
-Als we het Stripe Press-idee volgen, wordt het skelet de **hoofdnavigatie** en het visuele middelpunt. De tekstblokken ('Echografie', 'Coaching') verschijnen pas zodra je op een gewricht klikt of erover hovert.
-
-#### De nieuwe structuur:
-
-1.  **Header** (Onveranderd)
-2.  **Hero/Skelet Sectie:** (Nieuw) Dit beslaat het hele scherm.
-    *   Links: De hoofdtekst ("Dick Derksen - In beweging").
-    *   Midden/Rechts: Het interactieve SVG-skelet.
-    *   *De oude 'Diensten'-kaarten verdwijnen als losse blokken.* Hun tekst komt in de interactie van het skelet.
-3.  **Over Mij** (Iets compacter)
-4.  **Contact** (Onveranderd)
-
----
-
-### Werkend Voorbeeld: Vereenvoudigd Skelet-interactie
-
-Ik heb een voorbeeld gemaakt met een heel schematisch skelet (simpele lijnen en cirkels). Dit is puur om de **techniek en lay-out** te laten zien. Een echt, mooi getekend anatomisch skelet is een SVG-bestand dat je later moet (laten) maken of kopen.
-
-#### 1. De Bijgewerkte HTML (`index.html`)
-
-Vervang de inhoud van je `index.html` door deze code. Let op hoe de 'Diensten' nu *in* de skelet-sectie zijn verwerkt als verborgen tekstblokken.
-
-```html
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Derksound | Dick Derksen - Lifestyle Coach & Bokstrainer</title>
     <link rel="stylesheet" href="style.css">
 </head>
