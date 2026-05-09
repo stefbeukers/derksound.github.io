@@ -1,0 +1,229 @@
+/* --- Basis & Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1a252f; /* Diep donkerblauw (medisch/vertrouwen) */
+    --accent-color: #e67e22;  /* Energiek oranje (actie/boksen) */
+    --text-color: #333333;
+    --light-bg: #f4f6f7;
+    --white: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Voorkomt horizontale scrollbalken bij animaties */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px; /* Iets breder voor de skelet lay-out */
+    margin: 0 auto;
+}
+
+/* --- Navigatie --- */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* --- HOVER SKELET SECTIE STYLING --- */
+.hero-skeleton {
+    background-color: var(--primary-color);
+    color: var(--white);
+    min-height: 100vh; /* Beslaat het hele scherm */
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.skeleton-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Links tekst, rechts skelet */
+    gap: 4rem;
+    align-items: center;
+}
+
+.skeleton-intro h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.skeleton-intro p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* SVG Skelet Container */
+.skeleton-container {
+    position: relative; /* Nodig voor de info-overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skeleton-svg {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+}
+
+/* SVG Onderdelen Styling */
+.bone-static {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.2); /* Statische botten zijn vaag wit */
+    stroke-linecap: round;
+}
+
+.bone-arm, .bone-leg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.5); /* Beweegbare botten iets duidelijker */
+    stroke-linecap: round;
+}
+
+.joint-ball {
+    fill: rgba(255, 255, 255, 0.8);
+    stroke: none;
+    transition: fill 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+/* INTERACTIE STYLING */
+.interactive-joint:hover .joint-ball {
+    fill: var(--accent-color); /* Wordt oranje bij hover */
+    transform: scale(1.2); /* Iets groter */
+    transform-origin: center; /* Vergroot vanuit het midden */
+}
+
+/* De Info-overlays (verborgen) */
+.service-info-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    background: var(--white);
+    color: var(--text-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, transform 0.4s, visibility 0.4s;
+    z-index: 10;
+}
+
+.service-info-overlay h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Wanneer het tekstblok 'actief' is */
+.service-info-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- Overige Secties (Simpel) --- */
+.section {
+    padding: 5rem 0;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.bg-light {
+    background-color: var(--light-bg);
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+}
+
+.contact-info {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.contact-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+}
+
+.kvk-text {
+    opacity: 0.6;
+}
+
+/* --- Mobiele Responsiviteit --- */
+@media (max-width: 768px) {
+    .skeleton-wrapper {
+        grid-template-columns: 1fr; /* Stapel tekst en skelet */
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .skeleton-intro h1 {
+        font-size: 2.5rem;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+}
