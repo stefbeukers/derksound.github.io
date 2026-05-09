@@ -12,16 +12,15 @@
             <div class="logo">Derksound.</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#over">Over mij</a></li>
-                <li><a href="#aanbod">Aanbod</a></li>
+                <li><a href="#profiel">Profiel & Aanbod</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <!-- Hero Sectie (Staat altijd direct in beeld, dus geen animatie nodig hier) -->
-        <section id="home" class="hero">
+        <!-- Hero Sectie -->
+        <section id="home" class="hero slide-in-bottom">
             <div class="container hero-content">
                 <h1>Fysiek en mentaal sterker in balans</h1>
                 <p>Hoi, ik ben Dick Derksen. Als Lifestyle Coach en bokstrainer help ik jou om het maximale uit jezelf te halen, ondersteund door decennia aan medische kennis.</p>
@@ -29,43 +28,44 @@
             </div>
         </section>
 
-        <!-- Over Mij Sectie (Geanimeerd) -->
-        <section id="over" class="section">
-            <div class="container hidden">
-                <h2>Over Dick Derksen</h2>
-                <div class="about-text">
-                    <p>Beweging, gezondheid en het menselijk lichaam lopen als een rode draad door mijn leven. Met <strong>Derksound</strong> focus ik mij volledig op het begeleiden van mensen naar een gezondere en sterkere leefstijl door middel van Lifestyle Coaching en (Kick)boksen.</p>
-                    <p>Wat mijn aanpak uniek maakt, is mijn uitgebreide medische achtergrond. Al sinds 1992 ben ik werkzaam als Röntgen- en Echolaborant. Deze diepgaande kennis van anatomie en het bewegingsapparaat neem ik mee in elke training en coachingsessie. Ik weet precies hoe het lichaam werkt, wat overbelasting kan doen en hoe we veilig maar effectief jouw doelen kunnen bereiken.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Diensten Sectie (Geanimeerd, één voor één) -->
-        <section id="aanbod" class="section bg-light">
+        <!-- Modern Bento Grid Sectie -->
+        <section id="profiel" class="section bg-light">
             <div class="container">
-                <h2 class="hidden">Mijn Aanbod</h2>
-                <div class="services-grid">
-                    <div class="service-card hidden delay-1">
-                        <h3>Lifestyle Coaching</h3>
-                        <p>Persoonlijke begeleiding om jouw leefstijl structureel te verbeteren. We kijken naar voeding, beweging, stressmanagement en mindset om een balans te vinden die voor jou op de lange termijn werkt.</p>
+                
+                <div class="bento-grid">
+                    <!-- Groot blok (links inkomend) -->
+                    <div class="bento-box span-2 dark-box slide-in-left">
+                        <h3>De Medische Basis</h3>
+                        <p>Beweging en het menselijk lichaam lopen als een rode draad door mijn leven. Al sinds 1992 ben ik werkzaam als Röntgen- en Echolaborant. Ik weet exact hoe je lichaam werkt, wat overbelasting doet en hoe we veilig en effectief kunnen trainen.</p>
                     </div>
-                    <div class="service-card hidden delay-2">
+
+                    <!-- Klein blok (rechts inkomend) -->
+                    <div class="bento-box accent-box slide-in-right delay-1">
                         <h3>Parkinson Boksen</h3>
-                        <p>Speciaal ontwikkelde non-contact bokstrainingen voor mensen met de ziekte van Parkinson. Een bewezen methode om te werken aan balans, coördinatie, kracht en flexibiliteit in een veilige omgeving.</p>
+                        <p>Non-contact trainingen speciaal voor mensen met Parkinson. Werken aan balans, kracht en coördinatie in een veilige sfeer.</p>
                     </div>
-                    <div class="service-card hidden delay-3">
+
+                    <!-- Klein blok (links inkomend) -->
+                    <div class="bento-box light-box slide-in-left delay-1">
                         <h3>Kickboksen</h3>
-                        <p>Fysiek en mentaal uitdagende trainingen. Of je nu je conditie wilt verbeteren, sterker wilt worden of stoom wilt afblazen: kickboksen is de perfecte full-body workout met techniek voorop.</p>
+                        <p>Fysiek en mentaal uitdagend. Conditie opbouwen, sterker worden en techniek verbeteren. De perfecte full-body workout.</p>
+                    </div>
+
+                    <!-- Groot blok (rechts inkomend) -->
+                    <div class="bento-box span-2 outline-box slide-in-right">
+                        <h3>Lifestyle Coaching</h3>
+                        <p>Structurele verbetering van jouw leefstijl. We kijken verder dan alleen trainen: voeding, stressmanagement en mindset vormen samen de sleutel tot een balans die wél op de lange termijn werkt.</p>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- Contact Sectie (Geanimeerd) -->
+        <!-- Contact Sectie -->
         <section id="contact" class="section">
-            <div class="container hidden">
+            <div class="container contact-box slide-in-bottom">
                 <h2>Klaar voor de volgende stap?</h2>
-                <p>Neem gerust contact op voor een vrijblijvend kennismakingsgesprek. Ontdek wat we samen kunnen bereiken.</p>
+                <p>Neem gerust contact op voor een vrijblijvend kennismakingsgesprek.</p>
                 <div class="contact-info">
                     <p>✉️ <a href="mailto:info@derksound.nl">info@derksound.nl</a></p>
                     <p>📞 [Jouw Telefoonnummer]</p>
@@ -84,21 +84,24 @@
 
     <!-- Het script voor de scroll-animaties -->
     <script>
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px" // Start iets eerder met animeren
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                // Als het element in beeld komt, voeg de class 'show' toe
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
+                    // Optioneel: stop met observeren na 1 keer tonen
+                    // observer.unobserve(entry.target); 
                 }
             });
-        }, {
-            // Start de animatie als 15% van het element in beeld is
-            threshold: 0.15 
-        });
+        }, observerOptions);
 
-        // Zoek alle elementen met de class 'hidden' en houd ze in de gaten
-        const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
+        // Selecteer alle elementen die we willen animeren
+        const animatedElements = document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-in-bottom');
+        animatedElements.forEach((el) => observer.observe(el));
     </script>
 </body>
 </html>
