@@ -15,25 +15,26 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden; /* Voorkomt een horizontale scrollbalk door inschuivende blokken */
 }
 
 body {
     font-family: system-ui, -apple-system, sans-serif;
     color: var(--text-color);
     line-height: 1.6;
-    overflow-x: hidden;
+    background-color: var(--light-bg);
 }
 
 .container {
     width: 90%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 /* --- Navigatie --- */
 header {
     background-color: var(--white);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -62,7 +63,7 @@ nav {
 .nav-links a {
     text-decoration: none;
     color: var(--text-color);
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.3s;
 }
 
@@ -75,127 +76,146 @@ nav {
     display: inline-block;
     background-color: var(--accent-color);
     color: var(--white);
-    padding: 1rem 2.5rem;
+    padding: 1.2rem 2.5rem;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: bold;
     margin-top: 2rem;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
 }
 
 .btn:hover {
     background-color: #d35400;
-    transform: translateY(-2px);
-}
-
-/* --- Secties Algemeen --- */
-.section {
-    padding: 6rem 0;
-}
-
-.section h2 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 2rem;
-    text-align: center;
-    position: relative;
-}
-
-.section h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background-color: var(--accent-color);
-    margin: 10px auto 0;
-    border-radius: 2px;
-}
-
-.bg-light {
-    background-color: var(--light-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(230, 126, 34, 0.4);
 }
 
 /* --- ANIMATIE CLASSES --- */
-.hidden {
+.slide-in-left {
     opacity: 0;
-    transform: translateY(40px); /* Element start 40px lager */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateX(-80px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slide-in-bottom {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .show {
     opacity: 1;
-    transform: translateY(0); /* Element schuift naar originele positie */
+    transform: translate(0, 0);
 }
 
-/* Staggered animaties voor de grid-kaarten (één voor één binnenkomen) */
-.delay-1 { transition-delay: 100ms; }
-.delay-2 { transition-delay: 300ms; }
-.delay-3 { transition-delay: 500ms; }
-
+.delay-1 {
+    transition-delay: 150ms;
+}
 
 /* --- Hero Sectie --- */
 .hero {
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 10rem 0;
+    padding: 8rem 0 4rem;
     text-align: center;
-    background-image: linear-gradient(rgba(26, 37, 47, 0.95), rgba(26, 37, 47, 0.95)); 
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
+    color: var(--primary-color);
     margin-bottom: 1.5rem;
-    line-height: 1.2;
+    line-height: 1.1;
+    letter-spacing: -1px;
 }
 
 .hero p {
     font-size: 1.3rem;
     max-width: 700px;
     margin: 0 auto;
-    opacity: 0.9;
+    color: #555;
 }
 
-/* --- Over Mij & Diensten --- */
-.about-text {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.1rem;
+/* --- Modern Bento Grid --- */
+.section {
+    padding: 4rem 0 8rem;
 }
 
-.about-text p {
-    margin-bottom: 1.5rem;
-}
-
-.services-grid {
+.bento-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
 }
 
-.service-card {
-    background: var(--white);
-    padding: 2.5rem 2rem;
-    border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    text-align: center;
-    border-top: 5px solid var(--accent-color);
+@media (min-width: 800px) {
+    .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(250px, auto);
+    }
+    
+    .span-2 {
+        grid-column: span 2;
+    }
 }
 
-.service-card h3 {
+.bento-box {
+    padding: 3rem;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bento-box h3 {
+    font-size: 1.8rem;
     margin-bottom: 1rem;
+}
+
+/* Kleuren voor de Bento Boxes */
+.dark-box {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.accent-box {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+.light-box {
+    background-color: var(--white);
     color: var(--primary-color);
-    font-size: 1.4rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+}
+
+.outline-box {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 3px solid var(--primary-color);
 }
 
 /* --- Contact & Footer --- */
-.contact-info {
+.contact-box {
+    background-color: var(--white);
+    padding: 4rem;
+    border-radius: 24px;
     text-align: center;
-    margin-top: 3rem;
-    font-size: 1.2rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
 }
 
-.contact-info p {
+.contact-box h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
     margin-bottom: 1rem;
+}
+
+.contact-info {
+    margin-top: 2rem;
+    font-size: 1.2rem;
 }
 
 .contact-info a {
@@ -205,37 +225,33 @@ nav {
 }
 
 footer {
-    background-color: var(--primary-color);
-    color: var(--white);
     text-align: center;
     padding: 3rem 0;
+    color: #888;
 }
 
 .kvk-text {
     font-size: 0.9rem;
-    opacity: 0.6;
     margin-top: 0.5rem;
 }
 
-/* --- Mobiele Responsiviteit --- */
+/* --- Mobiel --- */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
         gap: 1rem;
     }
     
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.8rem;
     }
 
-    /* Schakel delays uit op mobiel, anders moeten mensen te lang wachten met scrollen */
-    .delay-1, .delay-2, .delay-3 {
+    .bento-box {
+        padding: 2rem;
+    }
+    
+    /* Zorg dat de animaties op mobiel niet vertragen als alles onder elkaar staat */
+    .delay-1 {
         transition-delay: 0ms;
     }
 }
